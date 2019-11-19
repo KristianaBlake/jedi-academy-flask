@@ -27,30 +27,26 @@
 
 1. Students (Users)
 
-   - register route -> ('/register') --> POST
-   - login route -> ('/login') --> GET
-   - log out route -> ('logout') --> GET
-   - logged in route -> ('/logged_in') --> GET
-   - logged out route -> ('logout') --> GET
+   - register route -> ('/students/register') --> POST
+   - login route -> ('/students/login') --> GET
+   - log out route -> ('/students/logout') --> GET
 
-2. Admin
+2. Course
 
-   - see all students/courses route -> ('/') --> GET
-   - import all the same routes as students
-   - create courses route -> ('/') --> POST
-   - update/edit courses route -> ('/<id>') --> PUT
-   - delete courses route -> ('/<id>') --> Delete
+   - create courses route -> ('/courses/new') --> POST (must be admin)
+   - update/edit courses route -> ('/courses/<id>') --> PUT (must be admin)
+   - delete courses route -> ('/courses/<id>') --> Delete (must be admin)
+   - list all students in a course -> ('/courses/students') --> GET (must be admin)
+   - get all my courses (use current_user) -> ('/courses/current_user') --> GET
 
-3. Course
-
-   - show all courses route -> ('/') --> GET
-     // ask about <student_id>
+3. Enrollments
+   enroll -> ('enrollments/<course_id>') --> POST
+   unenroll -> ('enrollments/<course_id>') --> PUT
 
 ## MODELS
 
 ```
 class Student(UserMixin, Model):
-    student_id = PrimaryKey
     full_name = CharField(unique = True)
     email = CharField(unique=True)
     password = CharField()
@@ -61,7 +57,6 @@ class Student(UserMixin, Model):
 
 ```
 class Course(Model):
-    course_id = PrimaryKey
     title = CharField()
     description = CharField()
     start_date = DateTimeField(default=datetime.datetime.now)
