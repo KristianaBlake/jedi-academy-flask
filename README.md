@@ -25,8 +25,26 @@
 
 ## ROUTES
 
-1. register (@users) route -> /register --> POST
-2. login (@users) route -> /login --> GET
+1. Students (Users)
+
+   - register route -> ('/register') --> POST
+   - login route -> ('/login') --> GET
+   - log out route -> ('logout') --> GET
+   - logged in route -> ('/logged_in') --> GET
+   - logged out route -> ('logout') --> GET
+
+2. Admin
+
+   - see all students/courses route -> ('/') --> GET
+   - import all the same routes as students
+   - create courses route -> ('/') --> POST
+   - update/edit courses route -> ('/<id>') --> PUT
+   - delete courses route -> ('/<id>') --> Delete
+
+3. Course
+
+   - show all courses route -> ('/') --> GET
+     // ask about <student_id>
 
 ## MODELS
 
@@ -68,6 +86,10 @@ def initialize():
     print("Created tables if they weren't already there")
     DATABASE.close()
 ```
+
+# Wireframes
+
+https://wireframe.cc/ATI4gT
 
 # Stretch goals
 
