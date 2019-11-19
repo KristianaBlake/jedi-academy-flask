@@ -1,4 +1,4 @@
-## User Story
+# User Story
 
 - the first person who registers with the username 'admin' will have the admin rights
 - every other user will be a student
@@ -8,14 +8,14 @@
 3. user will to select their courses -- a minimum of 3
 4. if user has an account they will be brought to the landing page
 
-   # If user is admin
+   ## If user is admin
 
    1. admin will see the 5 pre filled courses that are concurrent with the jedi academny
    2. admin will be able to add, update, and delete courses
    3. admin will be able to see all the students that are in the jedi academny
    4. admin will be able to log out
 
-   # If user is student
+   ## If user is student
 
    1. user will be brought to the landing page
    2. user will be able to see the courses that they are in
@@ -69,6 +69,6 @@ def initialize():
     DATABASE.close()
 ```
 
-## Stretch goals
+# Stretch goals
 
 - user (student) will be able to create their own lightsaber and battle others whom have the same one
