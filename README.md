@@ -1,7 +1,7 @@
 # User Story
 
 - the first person who registers with the username 'admin' will have the admin rights
-- every other user will be a student
+- every other user will be a padawan
 
 1. user will be brought to the homepage
 2. user will register if they do not have an account next
@@ -12,31 +12,31 @@
 
    1. admin will see the 5 pre filled courses that are concurrent with the jedi academny
    2. admin will be able to add, update, and delete courses
-   3. admin will be able to see all the students that are in the jedi academny
+   3. admin will be able to see all the padawans that are in the jedi academny
    4. admin will be able to log out
 
-   ## If user is student
+   ## If user is padawan
 
    1. user will be brought to the landing page
    2. user will be able to see the courses that they are in
-   3. user will be able to click on a course and see the other students that are in the course with them
-      - user will not be able to see all the other students that are in the school with them UNLESS they are in the same course
-   4. user (student) will be able to log out
+   3. user will be able to click on a course and see the other padawans that are in the course with them
+      - user will not be able to see all the other padawans that are in the school with them UNLESS they are in the same course
+   4. user (padawan) will be able to log out
 
 ## ROUTES
 
-1. Students (Users)
+1. Padawans (Users)
 
-   - register route -> ('/students/register') --> POST
-   - login route -> ('/students/login') --> GET
-   - log out route -> ('/students/logout') --> GET
+   - register route -> ('/padawans/register') --> POST
+   - login route -> ('/padawans/login') --> GET
+   - log out route -> ('/padawans/logout') --> GET
 
 2. Course
 
    - create courses route -> ('/courses/new') --> POST (must be admin)
    - update/edit courses route -> ('/courses/<id>') --> PUT (must be admin)
    - delete courses route -> ('/courses/<id>') --> Delete (must be admin)
-   - list all students in a course -> ('/courses/students') --> GET (must be admin)
+   - list all padawans in a course -> ('/courses/padawans') --> GET (must be admin)
    - get all my courses (use current_user) -> ('/courses/current_user') --> GET
 
 3. Enrollments
@@ -46,7 +46,7 @@
 ## MODELS
 
 ```
-class Student(UserMixin, Model):
+class Padawan(UserMixin, Model):
     full_name = CharField(unique = True)
     email = CharField(unique=True)
     password = CharField()
@@ -68,7 +68,7 @@ class Course(Model):
 ```
 class Enrollments(Model):
     course_id = ForeignKeyField(Enrollments, backref='courses')
-    student_id = ForeignKeyField(Enrollments, backref='students')
+    padawan_id = ForeignKeyField(Enrollments, backref='padawans')
 
     class Meta:
         database = DATABASE
@@ -88,4 +88,4 @@ https://wireframe.cc/ATI4gT
 
 # Stretch goals
 
-- user (student) will be able to create their own lightsaber and battle others whom have the same one
+- user (padawan) will be able to create their own lightsaber and battle others whom have the same one
